@@ -272,3 +272,32 @@ console.log("Hello ");
 // }
 // console.log(x(1)(2)(3));
 
+// Episode 12:
+
+// Function Statement::
+
+// function myName() {
+//   console.log("My Name is Nitesh");
+// }
+// myName();
+
+// // function Expression::
+
+// const myName2 = function () {
+//   console.log("My Name Is Nitesh");
+// };
+// myName2();
+
+// // Arrow Function ::
+
+// const myName3 = () => {
+//   console.log("Namaste JavaScript!");
+// };
+// myName3();
+
+// // First class function::Because we can pass function as "arguments" and "return a function(HOF)"
+
+// function a() {
+//   console.log("Hello");
+// }
+// a(() => "hello");
