@@ -90,7 +90,7 @@ function b() {
  * var x=23;
  */
 
-// Episode 07 && 08:
+// Episode 07:
 
 /**
 SCPOE::
@@ -128,3 +128,147 @@ a();
 
 IMPORTANT TERMS:: LEXICAL ENVIRONMENT AND CHAIN , SCOPE CHAIN
 */
+
+// Episode 08:
+
+/**
+ *NOTE:: ACTUALLY LET & CONST ARE HOISTED BUT IN DIFFERENT LOCATION UNLIKE VAR .
+ * VAR VARIABLES ARE HOISTED IN "GLOBAL SPACE" .
+ * WHILE LET AND CONST ARE HOISTED IN "SOME SCRIPT SPACE"
+ * YOU CAN ACCESS GLOBAL BY "window or this" but not script space.
+ *
+ * Temporal Dead Zone : Time since when the let variable was hoisted until it is initialized some value.
+ * Reference Error are thrown when variables are in temporal dead zone.
+ *
+ * let a = 1;
+ * var b = 2;
+ * console.log(window.a);//refernce error
+ * console.log(window.b);
+ */
+
+// TYPE OF ERROR::
+
+// 1.Uncaught ReferenceError:x is not defined
+// console.log(x);
+
+// 2.Uncaught ReferenceError:Cannot access 'x' before initialization
+// console.log(x);
+// let x=2;
+
+// 3.Uncaught SyntaxError:Identifier 'a' has already been declared
+// let a=1;
+// let a=2;
+
+// 4.Uncaught SyntaxError:Missing initializer in const declaration
+// const a=;
+
+// 5.Uncaught TypeError:Assignment to constant variable
+// const a=23
+// a=42;
+
+// var a = 100;
+// {
+//     var a = 10; // same name as global var
+//     let b = 20;
+//     const c = 30;
+//     console.log(a); // 10
+//     console.log(b); // 20
+//     console.log(c); // 30
+// }
+// console.log(a); //
+
+// let x=2;
+// (function a(){
+//     var x=23;
+// }())
+// console.log(x);
+
+// Episdoe 09:
+
+/**
+ * var is the GLOBAL SCOPE and FUNCTION SCOPE(i.e:it's var variables are only accessible in within the function.)
+ * let and const are the BLOCK SCOPE.
+ *
+ */
+
+// SHADOWING:
+/** 
+var a = 34;
+{
+  var a = 44;
+  console.log(a);//44
+}
+console.log(a);// 44
+*/
+
+// Illegal Shadowing:
+/** 
+let a=2;
+{
+    var a=3;
+}
+console.log(a);
+*/
+
+// Episode 10:
+
+// Closure:: A closure is a function that has access to its outer function scope even after the function has returned. Meaning, A closure can remember and access variables and arguments reference of its outer function even after the function has returned.
+/** 
+function z() {
+  var b = 900;
+  function x() {
+    var a = 7;
+    function y() {
+      console.log(a, b);
+    }
+    y();
+  }
+  x();
+}
+z(); // 7 900
+*/
+
+// Episode 11:
+
+// setTimeOut::
+
+// Example 01::
+
+/**
+function x() {
+  console.log("Namaste javaScript! Before");
+  setTimeout(() => {
+    console.log("Namaste javaScript! ");
+  }, 3000);
+  console.log("Namaste javaScript! After");
+}
+x();
+ */
+// 6 6 6 6 6 6
+
+// Print 1 after 1 sec, 2 after 2 sec till 5 : Tricky interview question
+
+/** 
+for (var i = 1; i <= 5; i++) {
+  function close(i) {
+    setTimeout(() => {
+      console.log(i);
+    }, i * 1000);
+  }
+  close(i);
+}
+console.log("Hello ");
+*/
+// 1 2 3 4 5
+
+// CURRING::Currying in JavaScript transforms a function with multiple arguments into a nested series of functions, each taking a single argument. Currying helps you avoid passing the same variable multiple times, and it helps you create a higher order function.
+
+// function x(a) {
+//   return function y(b) {
+//     return function z(c) {
+//       return a + b + c;
+//     };
+//   };
+// }
+// console.log(x(1)(2)(3));
+
