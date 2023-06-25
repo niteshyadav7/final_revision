@@ -8,6 +8,7 @@
  *
  * NOTE:WHEN RETURN KEYWORD IS ENCOUNTERED ,IT RETURNS THE CONTROLS TO THE CALLED LINE AND THAT EXECUTION
  * IS DELETED.
+ * IF NO MORE CODE IN LOCAL EXECUTION THEN LEC IS REMOVED FROM FROM CALL STACK.
  *
  */
 
@@ -51,4 +52,40 @@ var getName=()=>{
 }
 
 NOTE:: getName is acts like the variables and while memory creation phase it's store the "undefined".
+ */
+
+/** 
+var x = 1;
+a();
+b();
+
+function a() {
+  var x = 10;
+  console.log(x);
+  //   return x;
+}
+
+function b() {
+  var x = 100;
+  console.log(x);
+  //   return x;
+}
+*/
+
+// Episode 05 && 06:
+
+/**
+ * AT GLOBAL LEVEL "window===this"
+ *
+ * var x=34;
+ * console.log(x)//34
+ * console.log(this.x)/34
+ * console.log(window.x)//34
+ * 
+ * NOTE::undefined!==not defined
+ * "undefined" occurs during the memory creation phase.
+ * "not defined" occurs when no value is not defined.
+ * console.log(x);//undefined
+ * console.log(a);//a is not defined
+ * var x=23;
  */
