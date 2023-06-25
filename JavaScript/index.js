@@ -81,7 +81,7 @@ function b() {
  * console.log(x)//34
  * console.log(this.x)/34
  * console.log(window.x)//34
- * 
+ *
  * NOTE::undefined!==not defined
  * "undefined" occurs during the memory creation phase.
  * "not defined" occurs when no value is not defined.
@@ -89,3 +89,42 @@ function b() {
  * console.log(a);//a is not defined
  * var x=23;
  */
+
+// Episode 07 && 08:
+
+/**
+SCPOE::
+{
+  var a = 12;
+  let b = 23;
+  const c = 54;
+}
+console.log(a); //a=12
+console.log(b); //b && c is not defined bze let is the block scope
+console.log(c);
+ */
+
+/**
+ * Scope Chain and Lexical Environment::
+ * NOTE:: A FUNCTION CAN ACCESS THE GLOBAL EXECUTION BUT GLOBAL EXECUTION CAN'T ACCESS THE LOCAL EXECTION CONTEXT.
+ * TECHNICAL TERMS:: To summarize the above points in terms of execution context:
+ * call_stack = [GEC, a(), c()]
+ * Now lets also assign the memory sections of each execution context in call_stack.
+ * c() = [[lexical environment pointer pointing to a()]]
+ * a() = [b:10, c:{}, [lexical environment pointer pointing to GEC]]
+ * GEC =  [a:{},[lexical_environment pointer pointing to null]]
+ */
+
+/** 
+function a() {
+  c();
+  function c() {
+    var b = 100;
+    console.log(b); // 100
+  }
+}
+var b = 10;
+a();
+
+IMPORTANT TERMS:: LEXICAL ENVIRONMENT AND CHAIN , SCOPE CHAIN
+*/
